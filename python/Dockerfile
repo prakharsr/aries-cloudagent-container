@@ -2,6 +2,8 @@ ARG base_image
 
 FROM ${base_image}
 
+USER root
+
 ARG agent_version
 ARG agent_implementation
 ARG tag_name=aries-cloudagent
@@ -20,6 +22,9 @@ LABEL summary="$SUMMARY" \
     version="$tag_version" \
     maintainer=""
 
+
+RUN apt-get update && apt-get install -y gcc libffi-dev apt-utils make
+RUN apt install -y libxml2-dev libxslt-dev python-dev
 RUN pip install --no-cache-dir aries-cloudagent==${agent_version}
 
 ENTRYPOINT ["/bin/bash", "-c", "aca-py \"$@\"", "--"]

@@ -120,7 +120,7 @@ VERSIONS = {
         {
             "version": "0.5.6",
             "args": {
-                "base_image": "bcgovimages/von-image:py36-1.15-0"
+                "base_image": "prakharsr/von-image-armv7l:latest"
             },
         }
     ]
